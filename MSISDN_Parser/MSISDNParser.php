@@ -5,8 +5,8 @@
  * Parser description.
  *
  * @version 1.0
- * @author Gregor Jovan
- * some scripts by https://github.com/dominikznidar/msisdn-parser
+ * @author small script upgrade Gregor Jovan
+ * scripts by https://github.com/dominikznidar/msisdn-parser
  */
 require_once 'JSonRPC.php';
 
