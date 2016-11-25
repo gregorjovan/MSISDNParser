@@ -17,24 +17,18 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Cache.php" />
-    <Compile Include="CodeReader.php" />
     <Compile Include="DataReader.php" />
-    <Compile Include="Data.php" />
     <Compile Include="index.php" />
     <Compile Include="JSonRPC.php" />
     <Compile Include="MSISDNParser.php" />
-    <Compile Include="Parser.php" />
     <Compile Include="RIpcord\ripcord.php" />
     <Compile Include="RIpcord\ripcord_client.php" />
     <Compile Include="RIpcord\ripcord_documentor.php" />
     <Compile Include="RIpcord\ripcord_server.php" />
-    <Compile Include="Script1.php" />
     <Compile Include="Tests\Class1.php" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="countries.json" />
-    <Content Include="CountryData.json" />
     <Content Include="si.json" />
   </ItemGroup>
   <ItemGroup>

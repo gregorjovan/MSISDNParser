@@ -1,17 +1,16 @@
 <?php
 
 /**
- * Reads data from component's data folder.
- * Contents of those files should contain data in JSON format.
+ * DataReader takes name of json file as input. Returns json formatted conted of the file.
+ *
+ *
+ *
+ * @version 1.0
+ * script: https://github.com/dominikznidar/msisdn-parser
  */
+
 class DataReader
 {
-    /**
-     * Fetches data from provided file.
-     * False is returned if the file is not found.
-     * @param  string $dataType Name of the file
-     * @return mixed            Contents of the file or false
-     */
     public function get($dataSourceName)
     {
         $rawData = $this->readData($dataSourceName);

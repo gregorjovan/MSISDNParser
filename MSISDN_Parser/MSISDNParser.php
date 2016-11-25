@@ -6,6 +6,7 @@
  *
  * @version 1.0
  * @author Gregor Jovan
+ * some scripts by https://github.com/dominikznidar/msisdn-parser
  */
 require_once 'JSonRPC.php';
 
@@ -16,17 +17,13 @@ class MSISDNStruct
     public $SubscriberNumber;
     public $CountryIdentifier;
 }
-$server = new JsonRpc( new MSISDNParser() );
-$server->process();
 
 class MSISDNParser
 {
     function __construct()
     {
-        
         $this->parsedNumber = new MSIsdnStruct();
         $this->dataReader = new DataReader();
-        
     }
 
     public function getData($msisdn)
@@ -47,13 +44,14 @@ class MSISDNParser
     private function lookupCountry($countryCode, $subscriberNumber = '')
     {
         $countries = $this->dataReader->get('countries');
+        //script by https://github.com/dominikznidar/msisdn-parser
         do {
             if (isset($countries[$countryCode])) {
                 $this->parsedNumber->CountryDialingCode = (int)$countryCode;
                 $this->parsedNumber->SubscriberNumber = (int)$subscriberNumber;
                 $this->parsedNumber->CountryIdentifier = $countries[$countryCode];
                 $this->parsedNumber->MNOIdentifier = $this->getMnoIdentifier((int)$subscriberNumber, $countries[$countryCode]);
-                return(json_encode($this->parsedNumber));
+                return($this->parsedNumber);
             }
             $subscriberNumber = substr($countryCode, -1).$subscriberNumber;
             $countryCode = floor($countryCode/10);

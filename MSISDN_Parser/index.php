@@ -1,35 +1,6 @@
 <?php
 include_once 'DataReader.php';
 include_once 'MSISDNParser.php';
-
-/*
-$g = new MSISDNParser();
-if($g===false)
-{
-    echo("štala");
-}
-else
-{
-    var_dump($g->getData("+38641810042"));
-}
-
-*/
-
-$client = new JsonRpc('http://localhost/MSISDNParser/MSISDNParser/MSISDN_Parser/');
-$result = $client->getData('+38641810042'); // returns 4
-
-var_dump($result);
-    /*
-$g = new MSISDNParser("+38641810042789");
-if($g===false)
-{
-    echo("štala");
-}
-else
-{
-    var_dump($g);
-}
-*/
 ?>
 
 <html>
@@ -39,11 +10,21 @@ else
 <p/>
     <div>
         <form method ="post">
-	        MSISDN number: <input name ="msisdn" title ="Input number" /><input type="submit" value="Send"/>
+	        MSISDN number: <input name ="msisdn" title ="Input number" /><input type="submit" value="Parse"/>
 	    </form>
     </div>
-    <div>
 
+    <div>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(!empty($_POST["msisdn"])){
+
+                $parser = new MSISDNParser();
+                $result = $parser->getData($_POST["msisdn"]);
+                var_dump($result);
+            }
+        }
+        ?>
 
 
     </div>
